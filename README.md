@@ -1,4 +1,4 @@
-lesson-example
+Intrinsically Disorder Proteins
 ==============
 
 [![Create a Slack Account with us][create_slack_svg]][slack_heroku_invite]
