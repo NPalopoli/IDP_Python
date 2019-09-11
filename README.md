@@ -1,100 +1,59 @@
-Intrinsically Disorder Proteins
-==============
+# Repeat proteins, explained
+Training material on protein repeats
 
-[![Create a Slack Account with us][create_slack_svg]][slack_heroku_invite]
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badge/) 
 
-This repository is using
-[The Carpentries lesson template][styles].
-Please see <https://carpentries.github.io/lesson-example/>
-for a rendered version of this material,
-including detailed instructions on design, setup, and formatting.
+This repository generates the corresponding [lesson website](https://idpfun.github.io/repeat-proteins-training/), 
+according to styles and recommentations from 
+[The Carpentries](https://carpentries.org/). 
 
-## Quick Instructions
+## Overview
 
-1.  Do *not* fork this repository directly on GitHub.
-    Instead, please follow the instructions in [the setup instructions][setup]
-    to create a repository for your lesson by importing material
-    from [the styles repository][styles].
+Lesson development for training in Tandem Repeat proteins is based on four simple recommendations 
+[1](https://f1000research.com/articles/6-876/v1). We are adopting the Open Source philosophy and policy for developing 
+and maintaning training material to help us in providing clear guidelines on how to annotate repeat proteins.
+1. Make source code publicly accessible from day one
+1. Adopt a licence and comply with the licence of third-party dependencies
+1. Define clear and transparent contribution, governance and communication processes
+1. Make software easy to discover by providing software metadata via a popular community registry
 
-2.  Once you have created your repository,
-    run `bin/lesson_initialize.py` to create standard lesson-specific files.
-    You *must* edit several values in `_config.yml`
-    so that GitHub Pages will render your lesson correctly.
+[1] [Four simple recommendations to encourage best practices in research software](https://f1000research.com/articles/6-876/v1)
 
-3.  Please read [the episodes of this lesson][rendered] to format your material.
+## Contributing
 
-4.  Please keep the master copy of your lesson in your repository's `gh-pages` branch,
-    since that is what is
-    [automatically published as a website by GitHub][github-pages].
+We welcome all contributions to improve the lesson! Maintainers will do their best to help you if you have any
+questions, concerns, or experience any difficulties along the way.
 
-5.  To preview material,
-    please run `make serve` from the command line
-    to launch Jekyll with the correct parameters,
-    or push to your repository's `gh-pages` branch
-    and let GitHub take care of the rendering.
+We'd like to ask you to familiarize yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at
+the [more detailed guidelines][https://carpentries.github.io/curriculum-development/] on proper formatting, ways to 
+render the lesson locally, and even how to write new episodes.
 
-6.  Run `make lesson-check` to check that your files follow our formatting rules.
+Please see the current list of [issues](https://github.com/idpfun/repeat-proteins-training/issues) for ideas for 
+contributing to this repository. For making your contribution, we use the GitHub flow, which is
+nicely explained in the chapter [Contributing to a Project](http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) 
+in Pro Git by Scott Chacon.
+Look for the tag ![good_first_issue](https://img.shields.io/badge/-good%20first%20issue-gold.svg). This indicates that the mantainers will welcome a pull request fixing this issue.  
 
-7.  If you find an error or omission in this documentation,
-    please [file an issue in this repository][example-issues].
-    If you find an error or omission in the lesson template,
-    please [file an issue in the styles repository][styles-issues] instead.
 
-## Layout
+## Maintainer(s)
 
-The layout of this repository is explained in [this site's episodes][rendered].
-In brief:
+Current maintainers of this lesson are 
 
-1.  The source for pages that appear as top-level items in the navigation bar
-    are stored in the root directory,
-    including the home page (`index.md`),
-    the reference page (`reference.md`),
-    and the setup instructions (`setup.md`).
+* Lisanna Paladin, @lisanna
+* Alexander Monzon, @AlexanderMon
+* Marco Necci, @marnec
+* Malvika Sharan, @malvikasharan
 
-2.  Source files for lesson episodes are stored in `_episodes`;
-    `_episodes/01-xyz.md` generates `/01-xyz/index.html`,
-    which can be linked to using `/01-xyz/`.
 
-3.  If you are writing lessons in R Markdown,
-    source files go in `_episodes_rmd`.
-    You must run `make lesson-rmd` to turn these into Markdown in `_episodes`
-    and commit those Markdown files to the repository
-    (since GitHub won't run anything except Jekyll to format material).
-    You must also commit any figures generated from your lessons,
-    which are stored in the `fig` directory.
+Get in touch with us through the [gitter channel](https://gitter.im/IDPFUN/community).
 
-4.  Files that appear under the "extras" menu are stored in `_extras`.
+## Authors
 
-5.  Figures are stored in the `fig` directory,
-    data sets in `data`,
-    source code in `code`,
-    and miscellaneous files in `files`.
+A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
 
-## Getting Started
+## Citation
 
-1.  Run `bin/lesson_initialize.py` to create files
-    that can't be stored in the template repository
-    (because they would cause repeated merge conflicts),
-    then edit `_config.yml` as described in
-    [the documentation][editing-config].
+To cite this lesson, please get in contact with [Lisanna Paladin](https://github.com/Lisanna) or join us in the
+[gitter channel](https://gitter.im/IDPFUN/community).
 
-2.  Run `make lesson-check` at any time
-    to check that your lesson files follow our formatting rules.
-    If you come across formatting issues that the checker doesn't report,
-    please [file an issue in the styles repository][styles-issues].
 
-3.  For a list of helpful commands run `make` in this directory.
-    If you are looking for things to work on,
-    please see [the list of issues for this repository][issues].
-
-[collections]: https://jekyllrb.com/docs/collections/
-[editing-config]: https://carpentries.github.io/lesson-example/03-organization/
-[example-issues]: https://github.com/carpentries/lesson-example/issues/
-[github-pages]: https://help.github.com/articles/creating-project-pages-manually/
-[issues]: https://github.com/carpentries/lesson-example/issues
-[rendered]: https://carpentries.github.io/lesson-example/
-[setup]: https://carpentries.github.io/lesson-example/setup.html
-[styles-issues]: https://github.com/carpentries/styles/issues/
-[styles]: https://github.com/carpentries/styles/
-[create_slack_svg]: https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg
-[slack_heroku_invite]: https://swc-slack-invite.herokuapp.com
