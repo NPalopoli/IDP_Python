@@ -1,6 +1,6 @@
 ---
 title: "Running and Quitting"
-teaching: 15
+teaching: 20
 exercises: 0
 questions:
 - "How can I run Python programs?"
