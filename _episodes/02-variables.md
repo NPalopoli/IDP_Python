@@ -234,7 +234,7 @@ NameError: name 'last_name' is not defined
 > clears the interpreter and runs everything from a clean slate going top to bottom.
 {: .callout}
 
-## basic operations with strings
+## Basic operations with strings
 
 We can perform operations on variables, here some examples with strings. 
 *   The characters (individual letters, numbers, and so on) in a string are

@@ -28,7 +28,7 @@ keypoints:
     *   Written in either single quotes or double quotes (as long as they match).
     *   The quote marks aren't printed when the string is displayed.
 
-## Use the built-in function `type` to find the type of a value.
+## Use the built-in function `type` to find the type of a value
 
 *   Use the built-in function `type` to find out what type a value has.
 *   Works on variables as well.
@@ -53,136 +53,132 @@ print(type(fitness))
 ~~~
 {: .output}
 
-## Types control what operations (or methods) can be performed on a given value.
-
-*   A value's type determines what the program can do to it.
-
-~~~
-print(5 - 3)
-~~~
-{: .language-python}
-~~~
-2
-~~~
-{: .output}
-
-~~~
-print('hello' - 'h')
-~~~
-{: .language-python}
-~~~
----------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-<ipython-input-2-67f5626a1e07> in <module>()
-----> 1 print('hello' - 'h')
-
-TypeError: unsupported operand type(s) for -: 'str' and 'str'
-~~~
-{: .error}
-
-## You can use the "+" and "*" operators on strings.
-
-*   "Adding" character strings concatenates them.
-
-~~~
-full_name = 'Ahmed' + ' ' + 'Walsh'
-print(full_name)
-~~~
-{: .language-python}
-~~~
-Ahmed Walsh
-~~~
-{: .output}
-
-*   Multiplying a character string by an integer _N_ creates a new string that consists of that character string repeated  _N_ times.
-    *   Since multiplication is repeated addition.
-
-~~~
-separator = '=' * 10
-print(separator)
-~~~
-{: .language-python}
-~~~
-==========
-~~~
-{: .output}
-
-## Strings have a length (but numbers don't).
-
-*   The built-in function `len` counts the number of characters in a string.
-
-~~~
-print(len(full_name))
-~~~
-{: .language-python}
-~~~
-11
-~~~
-{: .output}
-
-*   But numbers don't have a length (not even zero).
-
-~~~
-print(len(52))
-~~~
-{: .language-python}
-~~~
----------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-<ipython-input-3-f769e8e8097d> in <module>()
-----> 1 print(len(52))
-
-TypeError: object of type 'int' has no len()
-~~~
-{: .error}
-
-## <a name='convert-numbers-and-strings'></a> Must convert numbers to strings or vice versa when operating on them.
-
-*   Cannot add numbers and strings.
-
-~~~
-print(1 + '2')
-~~~
-{: .language-python}
-~~~
----------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-<ipython-input-4-fe4f54a023c6> in <module>()
-----> 1 print(1 + '2')
-
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
-~~~
-{: .error}
-
-*   Not allowed because it's ambiguous: should `1 + '2'` be `3` or `'12'`?
-*   Some types can be converted to other types by using the type name as a function.
-
-~~~
-print(1 + int('2'))
-print(str(1) + '2')
-~~~
-{: .language-python}
-~~~
-3
-12
-~~~
-{: .output}
-
-## Can mix integers and floats freely in operations.
-
-*   Integers and floating-point numbers can be mixed in arithmetic.
-    *   Python 3 automatically converts integers to floats as needed. (Integer division in Python 2 will return an integer, the *floor* of the division.)
-
-~~~
-print('half is', 1 / 2.0)
-print('three squared is', 3.0 ** 2)
-~~~
-{: .language-python}
-~~~
-half is 0.5
-three squared is 9.0
-~~~
-{: .output}
+> ## Types control what operations (or methods) can be performed on a given value
+> *   A value's type determines what the program can do to it.
+>
+>~~~
+>print(5 - 3)
+>~~~
+>{: .language-python}
+>~~~
+>2
+>~~~
+>{: .output}
+>
+>~~~
+>print('hello' - 'h')
+>~~~
+>{: .language-python}
+>~~~
+>---------------------------------------------------------------------------
+>TypeError                                 Traceback (most recent call last)
+><ipython-input-2-67f5626a1e07> in <module>()
+>----> 1 print('hello' - 'h')
+>
+>TypeError: unsupported operand type(s) for -: 'str' and 'str'
+>~~~
+>{: .error}
+>
+>*   You can use the "+" and "*" operators on strings.
+>*   "Adding" character strings concatenates them.
+>
+>~~~
+>full_name = 'Ahmed' + ' ' + 'Walsh'
+>print(full_name)
+>~~~
+>{: .language-python}
+>~~~
+>Ahmed Walsh
+>~~~
+>{: .output}
+>
+>*   "Multiplying" a character string by an integer _N_ creates a new string that consists of that character string repeated  _N_ times.
+>    *   Since multiplication is repeated addition.
+>
+>~~~
+>separator = '=' * 10
+>print(separator)
+>~~~
+>{: .language-python}
+>~~~
+>==========
+>~~~
+>{: .output}
+>
+>*  Strings have a length (but numbers don't).
+>*   The built-in function `len` counts the number of characters in a string.
+>
+>~~~
+>print(len(full_name))
+>~~~
+>{: .language-python}
+>~~~
+>11
+>~~~
+>{: .output}
+>
+>*   But numbers don't have a length (not even zero).
+>
+>~~~
+>print(len(52))
+>~~~
+>{: .language-python}
+>~~~
+>---------------------------------------------------------------------------
+>TypeError                                 Traceback (most recent call last)
+><ipython-input-3-f769e8e8097d> in <module>()
+>----> 1 print(len(52))
+>
+>TypeError: object of type 'int' has no len()
+>~~~
+>{: .error}
+>
+>*  <a name='convert-numbers-and-strings'></a> You can convert numbers to strings or vice versa when operating on them.
+>*   Cannot add numbers and strings.
+>
+>~~~
+>print(1 + '2')
+>~~~
+>{: .language-python}
+>~~~
+>---------------------------------------------------------------------------
+>TypeError                                 Traceback (most recent call last)
+><ipython-input-4-fe4f54a023c6> in <module>()
+>----> 1 print(1 + '2')
+>
+>TypeError: unsupported operand type(s) for +: 'int' and 'str'
+>~~~
+>{: .error}
+>
+>*   Not allowed because it's ambiguous: should `1 + '2'` be `3` or `'12'`?
+>*   Some types can be converted to other types by using the type name as a function.
+>
+>~~~
+>print(1 + int('2'))
+>print(str(1) + '2')
+>~~~
+>{: .language-python}
+>~~~
+>3
+>12
+>~~~
+>{: .output}
+>
+>*  You can mix integers and floats freely in operations.
+>*   Integers and floating-point numbers can be mixed in arithmetic.
+>*   Python 3 automatically converts integers to floats as needed. (Integer division in Python 2 will return an integer, the *floor* of the division.)
+>
+>~~~
+>print('half is', 1 / 2.0)
+>print('three squared is', 3.0 ** 2)
+>~~~
+>{: .language-python}
+>~~~
+>half is 0.5
+>three squared is 9.0
+>~~~
+>{: .output}
+{: .callout}
 
 ## Variables only change value when something is assigned to them.
 
