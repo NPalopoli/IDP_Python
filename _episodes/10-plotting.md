@@ -29,16 +29,16 @@ import matplotlib.pyplot as plt
 *   Simple plots are then (fairly) simple to create.
 
 ~~~
-time = [0, 1, 2, 3]
-position = [0, 100, 200, 300]
+res_position =   [0,    1,    2,   3,    4,    5,    6]    # x coords
+dis_prediction = [0.31, 0.44, 0.8, 0.62, 0.69, 0.42, 0.2]  # y coords
 
-plt.plot(time, position)
-plt.xlabel('Time (hr)')
-plt.ylabel('Position (km)')
+plt.plot(res_position, dis_prediction)
+plt.xlabel('Residue position')
+plt.ylabel('Disorder prediciton')
 ~~~
 {: .language-python}
 
-![Simple Position-Time Plot](../fig/9_simple_position_time_plot.svg)
+![Simple Disorder Prediciton](../fig/10_simple_disorder_prediciton.svg)
 ## Plot data directly from a [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html).
 
 *   We can also plot [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html).
@@ -48,18 +48,30 @@ plt.ylabel('Position (km)')
 ~~~
 import pandas as pd
 
-data = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
-
-# Extract year from last 4 characters of each column name
-years = data.columns.str.strip('gdpPercap_')
-# Convert year values to integers, saving results back to dataframe
-data.columns = years.astype(int)
-
-data.loc['Australia'].plot()
+data = pd.read_csv('../data/DisProt_and_pred_IDcontent.csv', index_col=[0])
+data
 ~~~
 {: .language-python}
 
-![GDP plot for Australia](../fig/9_gdp_australia.svg)
+|         |   DisProt |   Predictor |
+|:--------|----------:|------------:|
+| DP01108 |     0.36  |       0.531 |
+| DP01109 |     0.431 |       0.487 |
+| DP01110 |     0.28  |       0.554 |
+| DP01111 |     0.105 |       0.57  |
+| DP01112 |     0.041 |       0.282 |
+| DP01113 |     0.237 |       0.452 |
+| DP01114 |     0.111 |       0.469 |
+| DP01115 |     0.026 |       0.765 |
+| DP01117 |     0.022 |       0.554 |
+| DP01118 |     0.214 |       0.309 |
+
+~~~
+data["DisProt"].plot()
+~~~
+{: .language-python}
+
+![GDP plot for Australia](../fig/10_disorder_content.svg)
 ## Select and transform data, then plot it.
 
 *   By default, [`DataFrame.plot`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.html#pandas.DataFrame.plot) plots with the rows as the X axis.
