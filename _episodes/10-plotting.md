@@ -67,7 +67,7 @@ data
 | DP01118 |     0.214 |       0.309 |
 
 ~~~
-data["DisProt"].plot()
+data.head(10).plot()
 ~~~
 {: .language-python}
 
@@ -78,12 +78,12 @@ data["DisProt"].plot()
 *   We can transpose the data in order to plot multiple series.
 
 ~~~
-data.T.plot()
+data.head(10).plot(kind="bar")
 plt.ylabel('GDP per capita')
 ~~~
 {: .language-python}
 
-![GDP plot for Australia and New Zealand](../fig/9_gdp_australia_nz.svg)
+![GDP plot for Australia and New Zealand](../fig/10_bar_disorder_content.svg)
 ## Many styles of plot are available.
 
 *   For example, do a bar plot using a fancier style.
@@ -95,7 +95,7 @@ plt.ylabel('GDP per capita')
 ~~~
 {: .language-python}
 
-![GDP barplot for Australia](../fig/9_gdp_bar.svg)
+![GDP barplot for Australia](../fig/10_bar_transposed_disorder_content.svg)
 
 ## Data can also be plotted by calling the `matplotlib` `plot` function directly.
 *   The command is `plt.plot(x, y)`
@@ -104,30 +104,30 @@ plt.ylabel('GDP per capita')
 ## Get Australia data from dataframe
 
 ~~~
-years = data.columns
-gdp_australia = data.loc['Australia']
+entries = data.head(10).index
+idcont_disprot = data['DisProt'].head(10)
 
-plt.plot(years, gdp_australia, 'g--')
+plt.plot(entries, idcont_disprot, 'g--')
+plt.xticks(rotation=90)
 ~~~
 {: .language-python}
 
-![GDP formatted plot for Australia](../fig/9_gdp_australia_formatted.svg)
+![GDP formatted plot for Australia](../fig/10_disprot_idcontent.svg)
 
 ## Can plot many sets of data together.
 
 ~~~
-# Select two countries' worth of data.
-gdp_australia = data.loc['Australia']
-gdp_nz = data.loc['New Zealand']
+entries = data.head(10).index
+idcont_disprot = data['DisProt'].head(10)
+idcont_pred = data['Predictor'].head(10)
 
-# Plot with differently-colored markers.
-plt.plot(years, gdp_australia, 'b-', label='Australia')
-plt.plot(years, gdp_nz, 'g-', label='New Zealand')
 
-# Create legend.
-plt.legend(loc='upper left')
-plt.xlabel('Year')
-plt.ylabel('GDP per capita ($)')
+plt.plot(entries, idcont_disprot, 'g-', marker="o", label="DisProt")
+plt.plot(entries, idcont_pred, 'b-', marker="o", label="Predictor")
+
+plt.xticks(rotation=90)
+plt.ylabel("ID content")
+plt.legend()
 ~~~
 {: .language-python}
 
@@ -158,8 +158,7 @@ plt.ylabel('GDP per capita ($)')
 > {: .language-python}
 {: .callout}
 
-
-![GDP formatted plot for Australia and New Zealand](../fig/9_gdp_australia_nz_formatted.svg)
+![GDP formatted plot for Australia](../fig/10_plt_idcontent.svg)
 *   Plot a scatter plot correlating the GDP of Australia and New Zealand
 *   Use either `plt.scatter` or `DataFrame.plot.scatter`
 
