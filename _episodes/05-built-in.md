@@ -59,7 +59,7 @@ after
 
 ## Commonly-used built-in functions include `max`, `min`, and `round`.
 
-*   Use `max` to find the largest value of one or more values.
+*   Use `max` to find the largest value in a series of values
 *   Use `min` to find the smallest.
 *   Both work on character strings as well as numbers.
     *   "Larger" and "smaller" use (0-9, A-Z, a-z) to compare letters.
