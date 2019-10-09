@@ -44,6 +44,7 @@ plt.ylabel('Disorder prediciton')
 *   We can also plot [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html).
 *   This implicitly uses [`matplotlib.pyplot`](https://matplotlib.org/api/pyplot_api.html).
 *   The simplest way to plot from pandas is to use the plot() method. In this case, it's not quite the right plot 
+
 ~~~
 import pandas as pd
 
