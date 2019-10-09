@@ -6,7 +6,7 @@ questions:
 - "How can I plot my data?"
 - "How can I save my plot for publishing?"
 objectives:
-- "Create a time series plot showing a single data set."
+- "Create a bar plot showing a two data sets"
 - "Create a scatter plot showing relationship between two data sets."
 keypoints:
 - "[`matplotlib`](https://matplotlib.org/) is the most widely used scientific plotting library in Python."
@@ -43,39 +43,21 @@ plt.ylabel('Disorder prediciton')
 
 *   We can also plot [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html).
 *   This implicitly uses [`matplotlib.pyplot`](https://matplotlib.org/api/pyplot_api.html).
-*   Before plotting, we convert the column headings from a `string` to `integer` data type, since they represent numerical values
-
+*   The simplest way to plot from pandas is to use the plot() method. In this case, it's not quite the right plot 
 ~~~
 import pandas as pd
 
 data = pd.read_csv('../data/DisProt_and_pred_IDcontent.csv', index_col=[0])
-data
+data["DisProt"].head(20).plot()
 ~~~
 {: .language-python}
 
-|         |   DisProt |   Predictor |
-|:--------|----------:|------------:|
-| DP01108 |     0.36  |       0.531 |
-| DP01109 |     0.431 |       0.487 |
-| DP01110 |     0.28  |       0.554 |
-| DP01111 |     0.105 |       0.57  |
-| DP01112 |     0.041 |       0.282 |
-| DP01113 |     0.237 |       0.452 |
-| DP01114 |     0.111 |       0.469 |
-| DP01115 |     0.026 |       0.765 |
-| DP01117 |     0.022 |       0.554 |
-| DP01118 |     0.214 |       0.309 |
+![Disorder content of DisProt](../fig/10_disorder_content.svg)
+## Select data, chose the right plot.
 
-~~~
-data.head(10).plot()
-~~~
-{: .language-python}
-
-![GDP plot for Australia](../fig/10_disorder_content.svg)
-## Select and transform data, then plot it.
-
-*   By default, [`DataFrame.plot`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.html#pandas.DataFrame.plot) plots with the rows as the X axis.
-*   We can transpose the data in order to plot multiple series.
+*   By default, [`DataFrame.plot()`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.html#pandas.DataFrame.plot) plots with the rows as the X axis.
+*   In this case a bar plot seems more appropriate. We can draw it with [`Dataframe.plot.bar()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.bar.html)
+*   Since we have two columns, `pandas` takes care of plotting paired bars.
 
 ~~~
 data.head(10).plot(kind="bar")
@@ -83,25 +65,26 @@ plt.ylabel('GDP per capita')
 ~~~
 {: .language-python}
 
-![GDP plot for Australia and New Zealand](../fig/10_bar_disorder_content.svg)
+![Disorder content of DisProt and Predictor](../fig/10_bar_disorder_content.svg)
 ## Many styles of plot are available.
 
 *   For example, do a bar plot using a fancier style.
+*   Once set, a style will apply to all following plots. To revert just set `plt.style.use('default')`
+*   Transposing the [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) we plot two series.
 
 ~~~
 plt.style.use('ggplot')
 data.T.plot(kind='bar')
-plt.ylabel('GDP per capita')
 ~~~
 {: .language-python}
 
-![GDP barplot for Australia](../fig/10_bar_transposed_disorder_content.svg)
+![Transposed bar plot](../fig/10_bar_transposed_disorder_content.svg)
 
 ## Data can also be plotted by calling the `matplotlib` `plot` function directly.
 *   The command is `plt.plot(x, y)`
-*   The color / format of markers can also be specified as an optical argument: e.g. 'b-' is a blue line, 'g--' is a green dashed line.
+*   The color / format of markers can also be specified as an argument: e.g. 'b-' is a blue line, 'g--' is a green dashed line.
 
-## Get Australia data from dataframe
+## Get DisProt data from dataframe
 
 ~~~
 entries = data.head(10).index
@@ -112,7 +95,7 @@ plt.xticks(rotation=90)
 ~~~
 {: .language-python}
 
-![GDP formatted plot for Australia](../fig/10_disprot_idcontent.svg)
+![ID content formatted plot for DisProt](../fig/10_disprot_idcontent.svg)
 
 ## Can plot many sets of data together.
 
@@ -157,107 +140,104 @@ plt.legend()
 >
 > {: .language-python}
 {: .callout}
+ 
+![ID content formatted plot for DisProt](../fig/10_plt_idcontent.svg)
 
-![GDP formatted plot for Australia](../fig/10_plt_idcontent.svg)
-*   Plot a scatter plot correlating the GDP of Australia and New Zealand
+*   Plot a scatter plot correlating the ID content of DisProt and the Predictor
 *   Use either `plt.scatter` or `DataFrame.plot.scatter`
 
 ~~~
-plt.scatter(gdp_australia, gdp_nz)
+plt.scatter(data['DisProt'], data['Predictor'])
 ~~~
 {: .language-python}
 
-![GDP correlation using plt.scatter](../fig/9_gdp_correlation_plt.svg)
+![GDP correlation using plt.scatter](../fig/10_idcontent_correlation_plt.svg)
 ~~~
-data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
+data.plot.scatter("DisProt", "Predictor")
 ~~~
 {: .language-python}
 
-![GDP correlation using data.T.plot.scatter](../fig/9_gdp_correlation_data.svg)
+![GDP correlation using data.plot.scatter](../fig/10_idcontent_correlation_pd.svg)
 
-> ## Minima and Maxima
+> ## Mean and std
 >
-> Fill in the blanks below to plot the minimum GDP per capita over time
-> for all the countries in Europe.
-> Modify it again to plot the maximum GDP per capita over time for Europe.
+> Fill in the blanks below to plot the average (mean) ID content as a bar plot.
+> Modify it again to draw the standard deviation (std) as error bar.
 >
 > ~~~
-> data_europe = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
-> data_europe.____.plot(label='min')
-> data_europe.____
-> plt.legend(loc='best')
-> plt.xticks(rotation=90)
+> data = data = pd.read_csv('../data/DisProt_and_pred_IDcontent.csv', index_col=[0])
+> data.mean().plot.____(yerr=_____/2)
 > ~~~
 > {: .language-python}
 >
 > > ## Solution
 > >
 > > ~~~
-> > data_europe = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
-> > data_europe.min().plot(label='min')
-> > data_europe.max().plot(label='max')
-> > plt.legend(loc='best')
-> > plt.xticks(rotation=90)
+> > data = data = pd.read_csv('../data/DisProt_and_pred_IDcontent.csv', index_col=[0])
+> > data.mean().plot.bar(yerr=data.std()/2)
 > > ~~~
 > > {: .language-python}
-> > ![Minima Maxima Solution](../fig/9_minima_maxima_solution.png)
+> > ![Minima Maxima Solution](../fig/10_mean_idcontent.svg)
 > {: .solution}
 {: .challenge}
 
-> ## Correlations
+> ## Distributions
 >
-> Modify the example in the notes to create a scatter plot showing
-> the relationship between the minimum and maximum GDP per capita
-> among the countries in Asia for each year in the data set.
-> What relationship do you see (if any)?
+> Modify the example in the notes to create an histogram showing
+> the distribution of disorder content in DisProt and the Predictor
+> What differences do you see (if any)?
 >
 > ~~~
-> data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col='country')
-> data_asia.describe().T.plot(kind='scatter', x='min', y='max')
+> data = pd.read_csv('../data/DisProt_and_pred_IDcontent.csv', index_col=[1])
+> data.describe().T.hist()
 > ~~~
 > {: .language-python}
 >
 > > ## Solution
 > >
-> > ![Correlations Solution 1](../fig/9_correlations_solution1.svg)
+> > ~~~
+> > data = pd.read_csv('../data/DisProt_and_pred_IDcontent.csv', index_col=[0])
+> > data.hist()
+> > ~~~
+> > ![Correlations Solution 1](../fig/10_distribution_idcontent.svg)
 > >
-> > No particular correlations can be seen between the minimum and maximum gdp values
-> > year on year. It seems the fortunes of asian countries do not rise and fall together.
+> > The two distributions have very different shapes. DisProt looks like an 
+> > exponential decay (except for its tail) while predicted ID content has more
+> > of a bell shape
 > >
 > {: .solution}
 >
-> You might note that the variability in the maximum is much higher than
-> that of the minimum.  Take a look at the maximum and the max indexes:
+> It is not always easy to compare distributions plotted as histograms.
+> A great tool to compare distribution is instead the box-plot:
+> What do we notice from the comparison?
 >
 > ~~~
-> data_asia = pd.read_csv('data/gapminder_gdp_asia.csv', index_col='country')
-> data_asia.max().plot()
-> print(data_asia.idxmax())
-> print(data_asia.idxmin())
+> data = pd.read_csv('../data/DisProt_and_pred_IDcontent.csv', index_col=[0])
+> data.boxplot()
 > ~~~
 > {: .language-python}
 > > ## Solution
-> > ![Correlations Solution 2](../fig/9_correlations_solution2.png)
+> > ![Correlations Solution 2](../fig/10_boxplot_idcontent.svg)
 > >
-> > Seems the variability in this value is due to a sharp drop after 1972.
-> > Some geopolitics at play perhaps? Given the dominance of oil producing countries,
-> > maybe the Brent crude index would make an interesting comparison?
-> > Whilst Myanmar consistently has the lowest gdp, the highest gdb nation has varied
-> > more notably.
+> > It is now evident that DisProt disorder content is lower overall. It has a lower
+> > mean and its 3 quartile ends where the predicted 1 quartile starts. We can also notice
+> > that DisProt many outliers above the main body of it distribution. 
+> > This may indicate two things: either predictors over-predict, or DisProt has
+> > incomplete annotations.
 > >
 > {: .solution}
 {: .challenge}
 
 > ## More Correlations
 >
-> This short program creates a plot showing
-> the correlation between GDP and life expectancy for 2007,
-> normalizing marker size by population:
+> This short script creates a plot showing
+> the correlation DisProt and the Predictor ID content
+> with marker size and marker color being regulated by protein length:
 >
 > ~~~
-> data_all = pd.read_csv('data/gapminder_all.csv', index_col='country')
-> data_all.plot(kind='scatter', x='gdpPercap_2007', y='lifeExp_2007',
->               s=data_all['pop_2007']/1e6)
+> data = pd.read_csv('../data/DisProt_and_pred_IDcontent_length.csv', index_col=[0])
+> data.plot(kind='scatter', x='DisProt', y='Predictor', 
+>           s=data['len']/50, c='len', colormap='viridis')
 > ~~~
 > {: .language-python}
 >
@@ -265,7 +245,7 @@ data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
 > explain what each argument to `plot` does.
 >
 > > ## Solution
-> > ![More Correlations Solution](../fig/9_more_correlations_solution.svg)
+> > ![More Correlations Solution](../fig/10_idcontent_correlation_pd2.svg)
 > >
 > > A good place to look is the documentation for the plot function -
 > > help(data_all.plot).
@@ -278,6 +258,13 @@ data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
 > > s - Details for this can be found in the documentation of plt.scatter.
 > > A single number or one value for each data point. Determines the size
 > > of the plotted points.
+> >
+> > c - Details for this can be found in the documentation of plt.scatter.
+> > A single number or one value for each data point. Determines what color
+> > is picked from a colormap
+> > 
+> > colormap - a string that indicates the name of a colormap among those 
+> > included in [`matplotlib colormaps`](https://matplotlib.org/3.1.1/gallery/color/colormap_reference.html)
 > >
 > {: .solution}
 {: .challenge}
@@ -300,7 +287,7 @@ data.T.plot.scatter(x = 'Australia', y = 'New Zealand')
 >
 > Note that functions in `plt` refer to a global figure variable
 > and after a figure has been displayed to the screen (e.g. with `plt.show`) 
-> matplotlib will make this  variable refer to a new empty figure.
+> matplotlib will make this variable refer to a new empty figure.
 > Therefore, make sure you call `plt.savefig` before the plot is displayed to
 > the screen, otherwise you may find a file with an empty plot.
 >
