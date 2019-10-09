@@ -15,7 +15,7 @@ keypoints:
 - "Many styles of plot are available: see the [Python Graph Gallery](https://python-graph-gallery.com/matplotlib/) for more options."
 - "Can plot many sets of data together."
 ---
-## [`matplotlib`](https://matplotlib.org/) is the most widely used scientific plotting library in Python.
+## [`matplotlib`](https://matplotlib.org/) is the most widely used scientific plotting library in Python
 
 *   Commonly use a sub-library called [`matplotlib.pyplot`](https://matplotlib.org/api/pyplot_api.html).
 *   The Jupyter Notebook will render plots inline if we ask it to using a "magic" command.
@@ -39,7 +39,8 @@ plt.ylabel('Disorder prediciton')
 {: .language-python}
 
 ![Simple Disorder Prediciton](../fig/10_simple_disorder_prediciton.svg)
-## Plot data directly from a [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html).
+
+## Plot data directly from a [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)
 
 *   We can also plot [Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html).
 *   This implicitly uses [`matplotlib.pyplot`](https://matplotlib.org/api/pyplot_api.html).
@@ -54,7 +55,7 @@ data["DisProt"].head(20).plot()
 {: .language-python}
 
 ![Disorder content of DisProt](../fig/10_disorder_content.svg)
-## Select data, chose the right plot.
+## Select data, choose the right plot
 
 *   By default, [`DataFrame.plot()`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.html#pandas.DataFrame.plot) plots with the rows as the X axis.
 *   In this case a bar plot seems more appropriate. We can draw it with [`Dataframe.plot.bar()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.bar.html)
@@ -67,7 +68,8 @@ plt.ylabel('GDP per capita')
 {: .language-python}
 
 ![Disorder content of DisProt and Predictor](../fig/10_bar_disorder_content.svg)
-## Many styles of plot are available.
+
+## Many styles of plot are available
 
 *   For example, do a bar plot using a fancier style.
 *   Once set, a style will apply to all following plots. To revert just set `plt.style.use('default')`
@@ -98,7 +100,7 @@ plt.xticks(rotation=90)
 
 ![ID content formatted plot for DisProt](../fig/10_disprot_idcontent.svg)
 
-## Can plot many sets of data together.
+## You Can plot many sets of data together
 
 ~~~
 entries = data.head(10).index
@@ -125,8 +127,8 @@ plt.legend()
 > * Provide a label for each dataset in the figure:
 >
 > ~~~
-> plt.plot(years, gdp_australia, label='Australia')
-> plt.plot(years, gdp_nz, label='New Zealand')
+> plt.plot(entries, idcont_disprot, 'g-', marker="o", label="DisProt")
+> plt.plot(entries, idcont_pred, 'b-', marker="o", label="Predictor")
 > ~~~
 >
 > * Instruct `matplotlib` to create the legend.
