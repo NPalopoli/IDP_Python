@@ -73,11 +73,11 @@ If you run into any difficulties, please request help before the workshop begins
 
 ## Getting the Data
 
-The data we will be using is taken from the [gapminder][gapminder] dataset.
+The data we will be using is taken from the [DisProt](https://www.disprot.org/) and [MobiDB](http://mobidb.bio.unipd.it/) databases.
 To obtain it, download and unzip the file 
-[python-novice-gapminder-data.zip]({{page.root}}/files/python-novice-gapminder-data.zip).
+[disorder_data.zip](https://idpfun.github.io/IDP_Python//files/disorder_data.zip).
 In order to follow the presented material, you should launch the JupyterLab 
-server in the root directory (see [Starting JupyterLab]({{ page.root }}/01-run-quit/#starting-jupyterlab)).
+server in the root directory (see [Starting JupyterLab](https://idpfun.github.io/IDP_Python//01-run-quit/#starting-jupyterlab)).
 
 
 [anaconda]: https://www.anaconda.com/
