@@ -24,3 +24,4 @@ N-terminal is defined as the first 20% of the sequence length and the C-terminal
 last 20%. Add an optional parameter to your function that will allow you to test
 different combinations.
 3. Change the graph type. Plot the same data as a barplot.
+
