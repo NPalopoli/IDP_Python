@@ -3,8 +3,8 @@
 .DS_Store
 .ipynb_checkpoints
 .sass-cache
-__pycache__
 _site
+__pycache__
 .Rproj.user
 .Rhistory
 .RData

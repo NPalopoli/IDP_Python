@@ -45,6 +45,7 @@ if mass > 3.0:
 
 ~~~
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
+# define variable dinamically
 for m in masses:
     if m > 3.0:
         print(m, 'is large')
@@ -218,15 +219,15 @@ final velocity: 30.0
 > velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
 >
 > i = 0
-> for i in range(5):
->     if mass[i] > 5 and velocity[i] > 20:
+> for m, v in zip([mass, velocity]):
+>     if m > 5 and v > 20:
 >         print("Fast heavy object.  Duck!")
->     elif mass[i] > 2 and mass[i] <= 5 and velocity[i] <= 20:
+>     elif m > 2 and m <= 5 and v <= 20:
 >         print("Normal traffic")
->     elif mass[i] <= 2 and velocity[i] <= 20:
+>     elif m <= 2 and v <= 20:
 >         print("Slow light object.  Ignore it")
 >     else:
->         print("Whoa!  Something is up with the data.  Check it")
+>         print("Whoa! Something is up with the data. Check it")
 > ~~~
 > {: .language-python}
 >
@@ -235,15 +236,15 @@ final velocity: 30.0
 > when mixing `and` and `or` in the same condition.  That is, instead of:
 >
 > ~~~
-> if mass[i] <= 2 or mass[i] >= 5 and velocity[i] > 20:
+> if m <= 2 or m >= 5 and v > 20:
 > ~~~
 > {: .language-python}
 >
 > write one of these:
 >
 > ~~~
-> if (mass[i] <= 2 or mass[i] >= 5) and velocity[i] > 20:
-> if mass[i] <= 2 or (mass[i] >= 5 and velocity[i] > 20):
+> if (m <= 2 or m >= 5) and v > 20:
+> if m <= 2 or (m >= 5 and v > 20):
 > ~~~
 > {: .language-python}
 >
@@ -301,7 +302,7 @@ final velocity: 30.0
 > > original = [-1.5, 0.2, 0.4, 0.0, -1.3, 0.4]
 > > result = []
 > > for value in original:
-> >     if value<0.0:
+> >     if value < 0.0:
 > >         result.append(0)
 > >     else:
 > >         result.append(1)
@@ -316,9 +317,9 @@ final velocity: 30.0
 > Modify this program so that it only processes files with fewer than 50 records.
 >
 > ~~~
-> import glob
+> from pathlib import Path
 > import pandas as pd
-> for filename in glob.glob('data/*.csv'):
+> for filename in Path("data/").glob("*.csv"):
 >     contents = pd.read_csv(filename)
 >     ____:
 >         print(filename, len(contents))
@@ -327,53 +328,17 @@ final velocity: 30.0
 > > ## Solution
 > >
 > > ~~~
-> > import glob
+> > from pathlib import Path
 > > import pandas as pd
-> > for filename in glob.glob('data/*.csv'):
+> > for filename in Path("data/").glob("*.csv"):
 > >     contents = pd.read_csv(filename)
-> >     if len(contents)<50:
+> >     if len(contents) < 50:
 > >         print(filename, len(contents))
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 {: .challenge}
 
-> ## Initializing
->
-> Modify this program so that it finds the largest and smallest values in the list
-> no matter what the range of values originally is.
->
-> ~~~
-> values = [...some test data...]
-> smallest, largest = None, None
-> for v in values:
->     if ____:
->         smallest, largest = v, v
->     ____:
->         smallest = min(____, v)
->         largest = max(____, v)
-> print(smallest, largest)
-> ~~~
-> {: .language-python}
->
-> What are the advantages and disadvantages of using this method
-> to find the range of the data?
-> > ## Solution
-> >
-> > ~~~
-> > values = [-2,1,65,78,-54,-24,100]
-> > smallest, largest = None, None
-> > for v in values:
-> >     if smallest==None and largest==None:
-> >         smallest, largest = v, v
-> >     else:
-> >         smallest = min(smallest, v)
-> >         largest = max(largest, v)
-> > print(smallest, largest)
-> > ~~~
-> > {: .language-python}
-> {: .solution}
-{: .challenge}
 
 > ## Using Functions With Conditionals in Pandas
 >
@@ -382,29 +347,29 @@ final velocity: 30.0
 > for the quartile cut points.
 >
 > ~~~
-> def calculate_life_quartile(exp):
->     if exp < 58.41:
+> def calculate_quartile(id_content):
+>     if id_content < 0.06925:
 >         # This observation is in the first quartile
 >         return 1
->     elif exp >= 58.41 and exp < 67.05:
+>     elif id_content >= 0.06925 and exp < 0.16200:
 >         # This observation is in the second quartile
 >        return 2
->     elif exp >= 67.05 and exp < 71.70:
+>     elif id_content >= 0.16200 and exp < 0.32125:
 >         # This observation is in the third quartile
 >        return 3
->     elif exp >= 71.70:
+>     elif id_content >= 0.32125:
 >         # This observation is in the fourth quartile
 >        return 4
 >     else:
 >         # This observation has bad data
 >        return None
 >
-> calculate_life_quartile(62.5)
+> calculate_quartile(0.2)
 > ~~~
 > {: .language-python}
 >
 > ~~~
-> 2
+> 3
 > ~~~
 > {: .output}
 >
@@ -414,14 +379,14 @@ final velocity: 30.0
 > is an example, using the definition above.
 >
 > ~~~
-> data = pd.read_csv('Americas-data.csv')
-> data['life_qrtl'] = data['lifeExp'].apply(calculate_life_quartile)
+> data = pd.read_csv('data/DisProt_and_pred_IDcontent.csv')
+> data['DisProt'] = data['DisProt'].apply(calculate_quartile)
 > ~~~
 > {: .language-python}
 >
 > There is a lot in that second line, so let's take it piece by piece.
-> On the right side of the `=` we start with `data['lifeExp']`, which is the
-> column in the dataframe called `data` labeled `lifExp`.  We use the
-> `apply()` to do what it says, apply the `calculate_life_quartile` to the
+> On the right side of the `=` we start with `data['DisProt']`, which is the
+> column in the dataframe called `data` labeled `DisProt`.  We use the
+> `apply()` to do what it says, apply the `calculate_quartile` to the
 > value of this column for every row in the dataframe.
 {: .callout}
