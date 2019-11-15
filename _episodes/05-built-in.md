@@ -37,10 +37,10 @@ adjustment = 0.5   # Neither is this - anything after '#' is ignored.
 
 *   We have seen some functions already --- now let's take a closer look.
 *   An *argument* is a value passed into a function.
-*   `len` takes exactly one.
-*   `int`, `str`, and `float` create a new value from an existing one.
-*   `print` takes zero or more.
-*   `print` with no arguments prints a blank line.
+*   `len` takes exactly one argument.
+*   `int`, `str`, and `float` create a new value from a passed argument.
+*   `print` takes zero or more arguments.
+*   `print` with no arguments prints a blank line and a new line.
     *   Must always use parentheses, even if they're empty,
         so that Python knows a function is being called.
 
@@ -182,20 +182,20 @@ SyntaxError: unexpected EOF while parsing
 ~~~
 {: .error}
 
-*   The message indicates a problem on first line of the input ("line 1").
+*   The message indicates a problem on the first line of the input ("line 1").
     *   In this case the "ipython-input" section of the file name tells us that
         we are working with input into IPython,
         the Python interpreter used by the Jupyter Notebook.
 *   The `-6-` part of the filename indicates that
     the error occurred in cell 6 of our Notebook.
 *   Next is the problematic line of code,
-    indicating the problem with a `^` pointer.
+    and the position where the problem is identified, indicated by a pointer (`^`) .
 
 ## <a name='runtime-error'></a> Python reports a runtime error when something goes wrong while a program is executing.
 
 ~~~
 age = 53
-remaining = 100 - aege # mis-spelled 'age'
+remaining = 100 - aege  # mis-spelled 'age'
 ~~~
 {: .language-python}
 ~~~
@@ -209,6 +209,8 @@ NameError: name 'aege' is not defined
 {: .error}
 
 *   Fix syntax errors by reading the source and runtime errors by tracing execution.
+
+More on errors and their handling on lesson 20
 
 ## The Jupyter Notebook has two ways to get help.
 
