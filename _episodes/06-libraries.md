@@ -55,7 +55,7 @@ cos(pi) is -1.0
 ~~~
 {: .output}
 
-*   Have to refer to each item with the module's name.
+* You always have to refer to each item with its module's name.
     *   `math.cos(pi)` won't work: the reference to `pi`
         doesn't somehow "inherit" the function's reference to `math`.
 
@@ -241,7 +241,7 @@ cos(pi) is -1.0
 
 > ## When Is Help Available?
 >
-> When a colleague of yours types `help(math)`,
+> When you type `help(math)`,
 > Python reports an error:
 >
 > ~~~
@@ -249,7 +249,7 @@ cos(pi) is -1.0
 > ~~~
 > {: .error}
 >
-> What has your colleague forgotten to do?
+> What did you forget to do?
 >
 > > ## Solution
 > >
@@ -289,7 +289,7 @@ cos(pi) is -1.0
 > > {: .language-python}
 > >
 > > Since you just wrote the code and are familiar with it, you might actually
-> > find the first version easier to read. But when trying to read a huge piece
+> > find the first version easier to read. But when trying to read hundreds or thousands of lines
 > > of code written by someone else, or when getting back to your own huge piece
 > > of code after several months, non-abbreviated names are often easier, except
 > > where there are clear abbreviation conventions.

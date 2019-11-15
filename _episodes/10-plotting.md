@@ -27,6 +27,7 @@ import matplotlib.pyplot as plt
 {: .language-python}
 
 *   Simple plots are then (fairly) simple to create.
+*   They can be created from simple data structures like lists. More on lists on lesson 11
 
 ~~~
 res_position =   [0,    1,    2,   3,    4,    5,    6]    # x coords
@@ -63,7 +64,7 @@ data["DisProt"].head(20).plot()
 
 ~~~
 data.head(10).plot(kind="bar")
-plt.ylabel('GDP per capita')
+plt.ylabel('ID content')
 ~~~
 {: .language-python}
 
@@ -154,13 +155,13 @@ plt.scatter(data['DisProt'], data['Predictor'])
 ~~~
 {: .language-python}
 
-![GDP correlation using plt.scatter](../fig/10_idcontent_correlation_plt.svg)
+![ID content correlation using plt.scatter](../fig/10_idcontent_correlation_plt.svg)
 ~~~
 data.plot.scatter("DisProt", "Predictor")
 ~~~
 {: .language-python}
 
-![GDP correlation using data.plot.scatter](../fig/10_idcontent_correlation_pd.svg)
+![ID content correlation using data.plot.scatter](../fig/10_idcontent_correlation_pd.svg)
 
 > ## Mean and std
 >

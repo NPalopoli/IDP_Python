@@ -288,7 +288,7 @@ Name: Length, dtype: bool
 >
 > ~~~
 > import pandas as pd
-> coli = pd.read_csv('data/DisProt_data_Escherichia_coli.csv', index_col='UniProt ACC')
+> coli = pd.read_csv('data/DisProt_data_Escherichia-coli.csv', index_col='UniProt ACC')
 > ~~~
 > {: .language-python}
 >
