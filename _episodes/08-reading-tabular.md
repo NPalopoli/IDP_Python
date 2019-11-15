@@ -206,7 +206,7 @@ max    3546.000000  3795.000000  18562.000000
 
 > ## Reading Other Data
 >
-> Read the data in `DisProt_data_Escherichia_coli.csv`
+> Read the data in `DisProt_data_Escherichia-coli.csv`
 > (which should be in the same directory as `DisProt_data_Caenorhabditis-elegans.csv`)
 > into a variable called `coli`
 > and display its summary statistics.
@@ -215,7 +215,7 @@ max    3546.000000  3795.000000  18562.000000
 > > To read in a CSV, we use `pd.read_csv` and pass the filename 'data/gapminder_gdp_americas.csv' to it. 
 > > We also once again pass the column name 'UniProt ACC' to the parameter `index_col` in order to index by UniProt ACC:
 > > ~~~
-> > coli = pd.read_csv('data/DisProt_data_Escherichia_coli.csv', index_col='UniProt ACC')
+> > coli = pd.read_csv('data/DisProt_data_Escherichia-coli.csv', index_col='UniProt ACC')
 > > ~~~
 > >{: .language-python}
 > {: .solution}

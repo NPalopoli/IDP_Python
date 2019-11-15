@@ -21,29 +21,20 @@ keypoints:
 
 ~~~
 import pandas as pd
-for filename in ['data/gapminder_gdp_africa.csv', 'data/gapminder_gdp_asia.csv']:
-    data = pd.read_csv(filename, index_col='country')
+for filename in ['data/DisProt_and_pred_IDcontent.csv', 'data/DisProt_and_pred_IDcontent_length.csv']:
+    data = pd.read_csv(filename, index_col=[0])
     print(filename, data.min())
 ~~~
 {: .language-python}
 ~~~
-data/gapminder_gdp_africa.csv gdpPercap_1952    298.846212
-gdpPercap_1957    335.997115
-gdpPercap_1962    355.203227
-gdpPercap_1967    412.977514
-⋮ ⋮ ⋮
-gdpPercap_1997    312.188423
-gdpPercap_2002    241.165877
-gdpPercap_2007    277.551859
+../data/DisProt_and_pred_IDcontent.csv 
+DisProt      0.008
+Predictor    0.043
 dtype: float64
-data/gapminder_gdp_asia.csv gdpPercap_1952    331
-gdpPercap_1957    350
-gdpPercap_1962    388
-gdpPercap_1967    349
-⋮ ⋮ ⋮
-gdpPercap_1997    415
-gdpPercap_2002    611
-gdpPercap_2007    944
+../data/DisProt_and_pred_IDcontent_length.csv 
+DisProt       0.008
+Predictor     0.043
+len          24.000
 dtype: float64
 ~~~
 {: .output}
@@ -59,6 +50,7 @@ dtype: float64
 *   E.g., `glob.glob('*.txt')` matches all files in the current directory 
     whose names end with `.txt`.
 *   Result is a (possibly empty) list of character strings.
+*   N.B. for more elaborate operations with path python has a very powerful library called [`pathlib`](https://docs.python.org/3.7/library/pathlib.html)
 
 ~~~
 import glob
@@ -66,9 +58,10 @@ print('all csv files in data directory:', glob.glob('data/*.csv'))
 ~~~
 {: .language-python}
 ~~~
-all csv files in data directory: ['data/gapminder_all.csv', 'data/gapminder_gdp_africa.csv', \
-'data/gapminder_gdp_americas.csv', 'data/gapminder_gdp_asia.csv', 'data/gapminder_gdp_europe.csv', \
-'data/gapminder_gdp_oceania.csv']
+all csv files in data directory: ['../data/DisProt_and_pred_IDcontent.csv',
+ '../data/DisProt_and_pred_IDcontent_length.csv', 
+'../data/DisProt_data_Caenorhabditis-elegans.csv', 
+'../data/DisProt_data_Escherichia-coli.csv']
 ~~~
 {: .output}
 
@@ -87,38 +80,32 @@ all PDB files: []
     so that simple patterns will find the right data.
 
 ~~~
-for filename in glob.glob('data/gapminder_*.csv'):
+for filename in glob.glob('data/DisProt_and_pred_*.csv'):
     data = pd.read_csv(filename)
     print(filename, data['gdpPercap_1952'].min())
 ~~~
 {: .language-python}
 ~~~
-data/gapminder_all.csv 298.8462121
-data/gapminder_gdp_africa.csv 298.8462121
-data/gapminder_gdp_americas.csv 1397.717137
-data/gapminder_gdp_asia.csv 331.0
-data/gapminder_gdp_europe.csv 973.5331948
-data/gapminder_gdp_oceania.csv 10039.59564
+../data/DisProt_and_pred_IDcontent.csv 0.008
+../data/DisProt_and_pred_IDcontent_length.csv 0.008
 ~~~
 {: .output}
 
-*   This includes all data, as well as per-region data.
-*   Use a more specific pattern in the exercises to exclude the whole data set.
-*   But note that the minimum of the entire data set is also the minimum of one of the data sets,
-    which is a nice check on correctness.
+*   The `DisProt_*` pattern matches all files, both IDcontent files and organisms files.
+*   Use a more specific pattern in the exercises to exclude the IDcontent files.
 
 > ## Determining Matches
 >
-> Which of these files is *not* matched by the expression `glob.glob('data/*as*.csv')`?
+> Which of these files is *not* matched by the expression `glob.glob('data/*ID*.csv')`?
 >
-> 1. `data/gapminder_gdp_africa.csv`
-> 2. `data/gapminder_gdp_americas.csv`
-> 3. `data/gapminder_gdp_asia.csv`
-> 4. 1 and 2 are not matched.
+> 1. `data/DisProt_data_Caenorhabditis-elegans.csv`
+> 2. `data/DisProt_data_Escherichia-coli.csv`
+> 3. `data/DisProt_and_pred_IDcontent.csv`
+> 4. `data/DisProt_and_pred_IDcontent_length.csv`
 >
 > > ## Solution
 > >
-> > 1 is not matched by the glob.
+> > 1 and 2 are not matched by the glob.
 > {: .solution}
 {: .challenge}
 
@@ -156,29 +143,28 @@ data/gapminder_gdp_oceania.csv 10039.59564
 
 > ## Comparing Data
 >
-> Write a program that reads in the regional data sets
+> Write a program that reads in the IDcontent data sets
 > and plots the average GDP per capita for each region over time
 > in a single chart.
 > > ## Solution
-> > This solution uses string [`rpartition method`](https://docs.python.org/3/library/stdtypes.html#str.rpartition) to
-> > split the string filename into piece but we could have also used the [pathlib
-> > module](https://docs.python.org/3/library/pathlib.html) to help us split the filename into relevant pieces for a
-> > useful legend.
+> > This solution uses string [`split`](https://docs.python.org/3/library/stdtypes.html#str.rpartition) to
+> > split the string filename into piece and use the extracted name as a plot title. 
 > > ~~~
 > > import glob
 > > import pandas as pd
 > > import matplotlib.pyplot as plt
-> > fig, ax = plt.subplots(1,1)
-> > for filename in glob.glob('data/gapminder_gdp*.csv'):
+> > fig, axes = plt.subplots(1, 2)
+> > for i, filename in enumerate(glob.glob('../data/*data*.csv')):
 > >     dataframe = pd.read_csv(filename)
-> >     # extract region from the filename, expected to be in the format 'data/gapminder_gdp_<region>.csv'.
-> >     # we split the string using rpartition using
-> >     # `_` as our separator, extract the _<region>.csv, and then strip the .csv extension
-> >     region = filename.rpartition('_')[-1][:-4] 
-> >     dataframe.mean().plot(ax=ax, label=region)
-> > plt.legend()
-> > plt.show()
+> >     # extract organism name from the filename, expected to be in the format 'data/DisProt_data_<organism>.csv'.
+> >     # we split the string using split using
+> >     # `_` as our separator, extract the _<organism>.csv, and then strip the .csv extension
+> >     organism = filename.split('_')[-1][:-4]
+> >     dataframe[["Start", "End"]].mean().plot.bar(ax=axes[i], label=organism)
+> >     axes[i].title.set_text(organism)
 > > ~~~
-> > {: .language-python}
+> > > > {: .language-python}
+> > ![Disorder content of DisProt](../fig/13_plt_startend.svg)
+
 > {: .solution}
 {: .challenge}
