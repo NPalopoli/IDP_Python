@@ -1,4 +1,14 @@
-# DYI time
+---
+title: "DIY time"
+teaching: 10
+exercises: 60
+questions:
+- "?"
+objectives:
+- "?"
+keypoints:
+- "?"
+---
 
 ## Writing your function
 Now it is time to use everything you have learned to process disorder data. 

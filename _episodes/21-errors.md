@@ -1,4 +1,17 @@
-> ## Reading Error Messages
+---
+title: "Error messages"
+teaching: 0
+exercises: 0
+questions:
+- "?"
+objectives:
+- "?"
+keypoints:
+- "?"
+---
+
+>
+>> ## Reading Error Messages
 >
 > Read the traceback below, and identify the following:
 >
