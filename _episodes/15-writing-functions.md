@@ -131,6 +131,28 @@ result of call is: None
 ~~~
 {: .output}
 
+## Optional parameters
+Parameters can be optional. If you define a function like the following: 
+~~~
+def order_percent(length, disorder_length=0):
+    percent = ((length - disorder_length)/length) * 100
+    print("Disorder percent is", percent, "%") 
+~~~
+{: .language-python}
+You can call it with or without the parameter disorder_length
+~~~
+order_percent(1250)
+order_percent(1250, 340)
+~~~
+{: .language-python}
+* Built-in functions may use optional parameters
+~~~
+round(5.76543)
+round(5.76543, 4)
+~~~
+{: .language-python}
+What is the default value of the second parameter of the built-in function 'round'?
+
 > ## Identifying Syntax Errors
 >
 > 1. Read the code below and try to identify what the errors are
@@ -311,7 +333,7 @@ result of call is: None
 > > 
 > > 1. `2003/2/1`
 > > 2. We saw examples of using *named arguments* when working with the pandas library. For example, when reading in a dataset 
-> > using `data = pd.read_csv('data/DisProt_data_Escherichia_coli.csv', index_col='UniProt ACC')`, the last argument `index_col` is a 
+> > using `data = pd.read_csv('data/DisProt_data_Escherichia-coli.csv', index_col='UniProt ACC')`, the last argument `index_col` is a 
 > > named argument.  
 > > 3. Using named arguments can make code more readable since one can see from the function call what name the different arguments 
 > > have inside the function. It can also reduce the chances of passing arguments in the wrong order, since by using named arguments 
@@ -397,7 +419,7 @@ result of call is: None
 > ~~~
 > import pandas as pd
 >
-> df = pd.read_csv('data/DisProt_data_Escherichia_coli.csv', index_col='UniProt ACC')
+> df = pd.read_csv('data/DisProt_data_Escherichia-coli.csv', index_col='UniProt ACC')
 > colicin = df.loc['P09883']
 > ~~~
 > {: .language-python}
@@ -414,7 +436,7 @@ result of call is: None
 >
 > ~~~
 > def proportional_length(proteinId):
->     df = pd.read_csv('data/DisProt_data_Escherichia_coli.csv', index_col='UniProt ACC')
+>     df = pd.read_csv('data/DisProt_data_Escherichia-coli.csv', index_col='UniProt ACC')
 >     ____
 >     return prop
 > ~~~
@@ -433,7 +455,7 @@ result of call is: None
 > >
 > > ~~~
 > >  def proportional_length(proteinId):
-> >     df = pd.read_csv('data/DisProt_data_Escherichia_coli.csv', index_col='UniProt ACC')
+> >     df = pd.read_csv('data/DisProt_data_Escherichia-coli.csv', index_col='UniProt ACC')
 > >     protein = df.loc[proteinId]
 > >     prop = (protein.loc['end'] - protein.loc['start']) / protein.loc['length']
 > >     return prop
@@ -489,6 +511,3 @@ result of call is: None
 > > {: .language-python}
 > {: .solution}
 {: .challenge}
-
-
-add conditional parameters exercise
