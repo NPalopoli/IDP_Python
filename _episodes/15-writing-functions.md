@@ -1,7 +1,7 @@
 ---
 title: "Writing Functions"
 teaching: 10
-exercises: 15
+exercises: 30
 questions:
 - "How can I create my own functions?"
 objectives:
@@ -14,25 +14,18 @@ keypoints:
 - "Arguments in call are matched to parameters in definition."
 - "Functions may return a result to their caller using `return`."
 ---
-## Break programs down into functions to make them easier to understand.
+## Break programs down into functions
 
-*   Human beings can only keep a few items in working memory at a time.
-*   Understand larger/more complicated ideas by understanding and combining pieces.
-    *   Components in a machine.
-    *   Lemmas when proving theorems.
+Human beings can only keep a few items in working memory at a time. You understand larger/more complicated ideas by combining pieces.
 *   Functions serve the same purpose in programs.
-    *   *Encapsulate* complexity so that we can treat it as a single "thing".
-*   Also enables *re-use*.
-    *   Write one time, use many times.
+*   They also enable *re-use*: once one is written, you can use it many times.
 
-## Define a function using `def` with a name, parameters, and a block of code.
+## Defining a function
 
-*   Begin the definition of a new function with `def`.
-*   Followed by the name of the function.
+*   Begin the definition of a new function with `def`, followed by the name of the function.
     *   Must obey the same rules as variable names.
 *   Then *parameters* in parentheses.
-    *   Empty parentheses if the function doesn't take any inputs.
-    *   We will discuss this in detail in a moment.
+    *   Empty parentheses if the function doesn't require any inputs.
 *   Then a colon.
 *   Then an indented block of code.
 
@@ -42,11 +35,10 @@ def print_greeting():
 ~~~
 {: .language-python}
 
-## Defining a function does not run it.
+## Running a function
 
 *   Defining a function does not run it.
-    *   Like assigning a value to a variable.
-*   Must call the function to execute the code it contains.
+*   You must call the function to execute the code it contains.
 
 ~~~
 print_greeting()
@@ -57,14 +49,12 @@ Hello!
 ~~~
 {: .output}
 
-## Arguments in call are matched to parameters in definition.
+## Using the parameters
 
 *   Functions are most useful when they can operate on different data.
-*   Specify *parameters* when defining a function.
+*   To this aim, you specify *parameters* when defining a function.
     *   These become variables when the function is executed.
-    *   Are assigned the arguments in the call (i.e., the values passed to the function).
-    *   If you don't name the arguments when using them in the call, the arguments will be matched to
-parameters in the order the parameters are defined in the function.
+    *   The order is relevant, we will see that with an example.
 
 ~~~
 def print_date(year, month, day):
@@ -92,13 +82,12 @@ print_date(month=3, day=19, year=1871)
 
 *   Via [Twitter](https://twitter.com/minisciencegirl/status/693486088963272705):
     `()` contains the ingredients for the function
-    while the body contains the recipe.
+    while `{}` contains the recipe.
 
-## Functions may return a result to their caller using `return`.
+## Functions may return a result
 
-*   Use `return ...` to give a value back to the caller.
-*   May occur anywhere in the function.
-*   But functions are easier to understand if `return` occurs:
+*   Use `return` to give a value back to the caller.
+*   Usually `return` occurs:
     *   At the start to handle special cases.
     *   At the very end, with a final result.
 
@@ -129,7 +118,6 @@ average of empty list: None
 ~~~
 {: .output}
 
-*   Remember: [every function returns something]({{ page.root }}/04-built-in/).
 *   A function that doesn't explicitly `return` a value automatically returns `None`.
 
 ~~~
@@ -323,7 +311,7 @@ result of call is: None
 > > 
 > > 1. `2003/2/1`
 > > 2. We saw examples of using *named arguments* when working with the pandas library. For example, when reading in a dataset 
-> > using `data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')`, the last argument `index_col` is a 
+> > using `data = pd.read_csv('data/DisProt_data_Escherichia_coli.csv', index_col='UniProt ACC')`, the last argument `index_col` is a 
 > > named argument.  
 > > 3. Using named arguments can make code more readable since one can see from the function call what name the different arguments 
 > > have inside the function. It can also reduce the chances of passing arguments in the wrong order, since by using named arguments 
@@ -409,90 +397,49 @@ result of call is: None
 > ~~~
 > import pandas as pd
 >
-> df = pd.read_csv('data/gapminder_gdp_asia.csv', index_col=0)
-> japan = df.loc['Japan']
+> df = pd.read_csv('data/DisProt_data_Escherichia_coli.csv', index_col='UniProt ACC')
+> colicin = df.loc['P09883']
 > ~~~
 > {: .language-python}
 >
-> 1.Complete the statements below to obtain the average GDP for Japan
-> across the years reported for the 1980s.
+> 1.Complete the statements below to obtain proportional length of the disordered 
+> region in relation to the length of the protein.
 >
 > ~~~
-> year = 1983
-> gdp_decade = 'gdpPercap_' + str(year // ____)
-> avg = (japan.loc[gdp_decade + ___] + japan.loc[gdp_decade + ___]) / 2
+> prop = (colicin.loc[___] - colicin.loc[___]) / colicin.loc[___]
 > ~~~
 > {: .language-python}
 >
 > 2.Abstract the code above into a single function.
 >
 > ~~~
-> def avg_gdp_in_decade(country, continent, year):
->     df = pd.read_csv('data/gapminder_gdp_'+___+'.csv',delimiter=',',index_col=0)
+> def proportional_length(proteinId):
+>     df = pd.read_csv('data/DisProt_data_Escherichia_coli.csv', index_col='UniProt ACC')
 >     ____
->     ____
->     ____
->     return avg
+>     return prop
 > ~~~
 > {: .language-python}
->
-> 3.How would you generalize this function
->    if you did not know beforehand which specific years occurred as columns in the data?
->    For instance, what if we also had data from years ending in 1 and 9 for each decade?
->    (Hint: use the columns to filter out the ones that correspond to the decade,
->    instead of enumerating them in the code.)
 >
 > > ## Solution
 > >
 > > 1.
 > >
 > > ~~~
-> > year = 1983
-> > gdp_decade = 'gdpPercap_' + str(year // 10)
-> > avg = (japan.loc[gdp_decade + '2'] + japan.loc[gdp_decade + '7']) / 2
+> > prop = (colicin.loc['end'] - colicin.loc['start']) / colicin.loc['length']
 > > ~~~
 > > {: .language-python}
 > >
 > > 2.
 > >
 > > ~~~
-> > def avg_gdp_in_decade(country, continent, year):
-> >     df = pd.read_csv('data/gapminder_gdp_' + continent + '.csv', index_col=0)
-> >     c = df.loc[country]
-> >     gdp_decade = 'gdpPercap_' + str(year // 10)
-> >     avg = (c.loc[gdp_decade + '2'] + c.loc[gdp_decade + '7'])/2
-> >     return avg
+> >  def proportional_length(proteinId):
+> >     df = pd.read_csv('data/DisProt_data_Escherichia_coli.csv', index_col='UniProt ACC')
+> >     protein = df.loc[proteinId]
+> >     prop = (protein.loc['end'] - protein.loc['start']) / protein.loc['length']
+> >     return prop
 > > ~~~
 > > {: .language-python}
 > >
-> > 3.
-> > 
-> > We need to loop over the reported years
-> >    to obtain the average for the relevant ones in the data.
-> >
-> > ~~~
-> > def avg_gdp_in_decade(country, continent, year):
-> >     df = pd.read_csv('data/gapminder_gdp_' + continent + '.csv', index_col=0)
-> >     c = df.loc[country]
-> >     gdp_decade = 'gdpPercap_' + str(year // 10)
-> >     total = 0.0
-> >     num_years = 0
-> >     for yr_header in c.index: # c's index contains reported years
-> >         if yr_header.startswith(gdp_decade):
-> >             total = total + c.loc[yr_header]
-> >             num_years = num_years + 1
-> >     return total/num_years
-> > ~~~
-> > {: .language-python}
-> > The function can now be called by:
-> > ~~~
-> > avg_gdp_in_decade('Japan','asia',1983)
-> > ~~~
-> > {: .language-python}
-> > 
-> > ~~~
-> > 20880.023800000003
-> > ~~~
 > > {: .output}
 > {: .solution}
 {: .challenge}
@@ -542,3 +489,6 @@ result of call is: None
 > > {: .language-python}
 > {: .solution}
 {: .challenge}
+
+
+add conditional parameters exercise

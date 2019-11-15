@@ -12,7 +12,7 @@ keypoints:
 ---
 
 Leslie Lamport once said, "Writing is nature's way of showing you how sloppy your thinking is."
-The same is true of programming:
+The same is true in programming:
 many things that seem obvious when we're thinking about them
 turn out to be anything but when we have to explain them precisely.
 
@@ -35,3 +35,12 @@ turn out to be anything but when we have to explain them precisely.
     as well as the sections on [NumPy](http://stackoverflow.com/questions/tagged/numpy),
     [SciPy](http://stackoverflow.com/questions/tagged/scipy), and
     [Pandas](http://stackoverflow.com/questions/tagged/pandas).
+
+
+
+# Reflection exercise
+Reflect on and discuss the following:
+* A common refrain in software engineering is "Don't Repeat Yourself". How do the techniques we've learned in the last
+lessons help us avoid repeating ourselves? 
+* What are the pros / cons of making a variable global or local to a function? 
+* When would you consider turning a block of code into a function definition?
