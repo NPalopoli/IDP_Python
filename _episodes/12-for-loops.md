@@ -113,7 +113,7 @@ for kitten in [2, 3, 5]:
 ## The body of a loop can contain many statements.
 
 *   But no loop should be more than a few lines long.
-*   Hard for human beings to keep larger chunks of code in mind.
+*   It is hard for human beings to keep larger chunks of code in mind.
 
 ~~~
 primes = [2, 3, 5]
@@ -140,7 +140,7 @@ for p in primes:
 
 ~~~
 print('a range is not a list: range(0, 3)')
-for number in range(0,3):
+for number in range(0, 3):
     print(number)
 ~~~
 {: .language-python}
@@ -320,23 +320,23 @@ print(total)
 > The result should be `[1, 3, 5, 10]`.
 >
 > ~~~
-> cumulative.append(sum)
+> cumulative.append(summed_values)
 > for number in data:
 > cumulative = []
-> sum += number
-> sum = 0
+> summed_values += number
+> summed_values = 0
 > print(cumulative)
-> data = [1,2,2,5]
+> data = [1, 2, 2, 5]
 > ~~~
 > {: .language-python}
 > > ## Solution
 > > ~~~
-> > sum = 0
-> > data = [1,2,2,5]
+> > summed_values = 0
+> > data = [1, 2, 2, 5]
 > > cumulative = []
 > > for number in data:
-> >     sum += number
-> >     cumulative.append(sum)
+> >     summed_values += number
+> >     cumulative.append(summed_values)
 > > print(cumulative)
 > > ~~~
 > > {: .language-python}
@@ -365,8 +365,9 @@ print(total)
 > ~~~
 > {: .language-python}
 > > ## Solution
-> > The variable `message` needs to be initialized and Python variable names are case sensitive: `number` and `Number`
-> > refer to different variables.
+> > The variable `message` needs to be initialized;
+> > Variable names are case sensitive: `number` and `Number` refer to different variables;
+> > `a` should be a string (`"a"`) instead is written as a reference to a variable. 
 > > ~~~
 > > message = ""
 > > for number in range(10):

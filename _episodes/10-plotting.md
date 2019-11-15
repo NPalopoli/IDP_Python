@@ -27,6 +27,7 @@ import matplotlib.pyplot as plt
 {: .language-python}
 
 *   Simple plots are then (fairly) simple to create.
+*   They can be created from simple data structures like lists. More on lists on lesson 11
 
 ~~~
 res_position =   [0,    1,    2,   3,    4,    5,    6]    # x coords
