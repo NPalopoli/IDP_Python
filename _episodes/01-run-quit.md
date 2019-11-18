@@ -33,9 +33,7 @@ and even custom components in a flexible, integrated, and extensible manner. Jup
 reasonably up-to-date browser (ideally a current version of Chrome, Safari, or Firefox); Internet
 Explorer versions 9 and below are *not* supported.
 
-JupyterLab is included as part of the the Anaconda Python distribution. If you have not already 
-installed the Anaconda Python distribution, see [the setup instructions]({{ page.root }}/setup/) 
-for installation instructions.
+JupyterLab is included as part of the the Anaconda Python distribution.
 
 Even though JupyterLab is a web-based application, JupyterLab runs locally on your machine and 
 does not require an internet connection.
@@ -526,5 +524,6 @@ $ jupyter lab
 [jupyterlab-ui]: https://jupyterlab.readthedocs.io/en/stable/user/interface.html
 [jupyterlab-notebook-docs]: https://jupyterlab.readthedocs.io/en/stable/user/notebook.html
 [markdown]: https://en.wikipedia.org/wiki/Markdown
+[jupyterlab]: https://jupyterlab.readthedocs.io/en/stable/
 
 {% include links.md %}
