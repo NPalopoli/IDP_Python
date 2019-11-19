@@ -55,6 +55,9 @@ In Python, variable names:
 This means that, for example:
  - `weight0` is a valid variable name, whereas `0weight` is not
  - `weight` and `Weight` are different variables
+ 
+ Remember that this is not Math! `weight = 0` is not the same as `0 = weight`
+
 
 ## Types of data
 Python knows various types of data. Three common ones are:
