@@ -24,7 +24,7 @@ keypoints:
 *   Every value in a program has a specific type.
 *   Integer (`int`): represents positive or negative whole numbers like 3 or -512.
 *   Floating point number (`float`): represents real numbers like 3.14159 or -2.5.
-*   Character string (usually called "string", `str`): text.
+*   Character string (usually called "string", `str`): represents text.
     *   Written in either single quotes or double quotes (as long as they match).
     *   The quote marks aren't printed when the string is displayed.
 
@@ -247,7 +247,7 @@ first is 2 and second is 5
 > ## Choose a Type
 >
 > What type of value (integer, floating point number, or character string)
-> would you use to represent each of the following?  Try to come up with more than one good answer for each problem.  For example, in  # 1, when would counting days with a floating point variable make more sense than using an integer?  
+> would you use to represent each of the following? 
 >
 > 1. Number of days since the start of the year.
 > 2. Time elapsed from the start of the year until now in days.
@@ -256,6 +256,8 @@ first is 2 and second is 5
 > 5. Current population of a city.
 > 6. Average population of a city over time.
 >
+> Try to come up with more than one good answer for each problem.  
+> For example, in  # 1, when would counting days with a floating point variable make more sense than using an integer?  
 > > ## Solution
 > >
 > > The answers to the questions are:
@@ -420,39 +422,3 @@ first is 2 and second is 5
 > {: .solution}
 {: .challenge}
 
-> ## Complex Numbers
->
-> Python provides complex numbers,
-> which are written as `1.0+2.0j`.
-> If `val` is an imaginary number,
-> its real and imaginary parts can be accessed using *dot notation*
-> as `val.real` and `val.imag`.
->
-> ~~~
-> complex = 6 + 2j
-> print(complex.real)
-> print(complex.imag)
-> ~~~
-> {: .language-python}
->
-> ~~~
-> 6.0
-> 2.0
-> ~~~
-> {: .output}
->
->
-> 1.  Why do you think Python uses `j` instead of `i` for the imaginary part?
-> 2.  What do you expect `1+2j + 3` to produce?
-> 3.  What do you expect `4j` to be?  What about `4 j` or `4 + j`?
-> 
-> > ## Solution
-> >
-> > 1. Standard mathematics treatments typically use `i` to denote an imaginary number. However, from media reports it
-> > was an early convention established from electrical engineering that now presents a technically expensive area to
-> > change. [Stack Overflow provides additional explanation and
-> > discussion.](http://stackoverflow.com/questions/24812444/why-are-complex-numbers-in-python-denoted-with-j-instead-of-i)
-> > 2. `(4+2j)`
-> > 3. `4j`, `Syntax Error: invalid syntax`, in this case _j_ is considered a variable and this depends on if _j_ is defined and if so, its assigned value
-> {: .solution}
-{: .challenge}

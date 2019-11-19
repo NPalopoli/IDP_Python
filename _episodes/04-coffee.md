@@ -7,5 +7,5 @@ break: 20
 ---
 # Reflection exercise
 
-Over coffee, reflect on and discuss the following:
+Over coffee, reflect on (and discuss) the following:
 * Did the code always produce the results you expected? If not, why?

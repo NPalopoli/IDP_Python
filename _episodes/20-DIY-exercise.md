@@ -3,11 +3,11 @@ title: "DIY time"
 teaching: 10
 exercises: 60
 questions:
-- "?"
+- "Can I build my own program?"
 objectives:
-- "?"
+- "Write your own function."
 keypoints:
-- "?"
+- "Check your understanding without the exercises guidance."
 ---
 
 ## Writing your function
