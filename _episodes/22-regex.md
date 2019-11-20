@@ -3,12 +3,16 @@ title: "Regular expressions"
 teaching: 20
 exercises: 20
 questions:
-- ?
+- "How do I define regular expressions in Python?"
+- "How do I use them?"
 objectives:
-- ?
+- Understand what a regular expression is and its use-cases.
+- Write regular expressions patterns.
+- Find single and multiple instances of a pattern in a string with the `re` library.
 keypoints:
-- ?
-- ?
+- The `re` library is used to find regex in a string with Python.
+- Alternative characters are defined with `[]`
+- Repetitions are defined with `{}`
 ---
 
 ## Regular expressions
