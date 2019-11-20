@@ -177,6 +177,39 @@ regex = re.compile(r"\d{3}-\d{3}-\d{4}")
 | `\d{3}`   | Exactly three digits              |
 | `\d{3,5}` | Between three and five digits     |
 | `\d{3,}`  | Three or more digits              |
+
+* Of course quantity pattern will work with any character and with any character class
+
+| `\s`                 | One space                        |
+| `\S?`                | Zero or one non-space            |
+| `\w*`                | Zero or more word characters     |
+| `\W+`                | One or more non-word characters  |
+| `\D{3}`              | Exactly three non-digits         |
+| `\[aeoiuAEOIU]{3,5}` | Between three and five vowels    |
+
+## Grouping
+* In Japanese letters are usually consonant-vowels combinations (**sayonara = sa - yo - na - ra**)
+* Based on what we now up to this point, our regex would look like `[^aeoiu][aeoiu]+`
+* However the quantifier refers only to what comes immediately before it
+* That regex would also match something like
+    * saaaaaaaaaaa
+    * saoiaioiueai
+* We can group the two character classes together and apply quantifier to the group
+
+~~~
+regex = re.compile(r"[^aeoiu][aeoiu])+")
+match = regex.search("sayonara")
+print(match.group())
+~~~
+{: .language-python}
+
+~~~
+sayonara
+~~~
+{: .output}
+    
+
+
   
 
 >
