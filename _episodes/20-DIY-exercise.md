@@ -24,6 +24,28 @@ sequence?
 pie chart later.
 4. Plot the chart. 
 
+> > ## Solution
+> > No, there is no pre-cooked code here. We italians don't like pre-cooked things.
+> > This section will just add some more explanations if you feel you need them.
+> > 1. We learned how to import data from a file in the lesson "Reading Tabular Data into DataFrames".
+> > 2. You will have to loop (see lesson "For Loops") through the file rows (DisProt regions).
+> > Each file row contains the start and end of each region, as well as the total length of the protein.
+> > Therefore, calculating where does the center lie is a (or a series of) mathematical operation. 
+> > You will also need a way, to store the result of each row while looping through the file. 
+> > To do this, you can use the list type (see lesson "Lists"), create three lists and add each instance
+> > to the correct category.
+> > 3. Once you have the numbers (which will be the length of each list, right?) don't forget to check that
+> > they make sense. This is crucial whenever you are writing each little piece of your code (each function
+> > and module) because you may have designed the function in such a way that there is no Python error but still
+> > there is a logical error. To do so, always design a simple input with pre-defined output and run your 
+> > function to compare your expectations with the function result. 
+> > 4. Finally, we learned how to plot data in the lesson "Plotting". We know we haven't used the pie chart, 
+> > but you can check some examples of code in the [Python Graph Gallery](https://python-graph-gallery.com/matplotlib/)
+> > 
+> > Feel free to ask us if you have any doubt. We will cook your code together!
+> {: .solution}
+{: .challenge}
+
 ## Additional tasks
 If you finish early or you want to challenge yourself at home, here some possible 
 variations:

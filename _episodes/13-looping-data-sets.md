@@ -165,6 +165,5 @@ for filename in glob.glob('data/DisProt_and_pred_*.csv'):
 > > ~~~
 > > > > {: .language-python}
 > > ![Disorder content of DisProt](../fig/13_plt_startend.svg)
-
 > {: .solution}
 {: .challenge}

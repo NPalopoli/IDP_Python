@@ -442,7 +442,7 @@ Name: Length, dtype: bool
 > > ## Solution
 > > Among many choices, dir lists the `median()` function as a possibility.  Thus,
 > > ~~~
-> > data.loc[:, "Length"].median()
+> > data["Length"].median()
 > > ~~~
 > > {: .language-python}
 > {: .solution}
