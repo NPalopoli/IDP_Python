@@ -75,12 +75,15 @@ for i, _ in enumerate(text):
 > Write a function that detects the restriction site "GAATTC" in any input sequence
 > and test it with two examples: one that contains the string and the other that doesn't.
 > > ## Solution
+> > ~~~
 > > import re
 > > def find_rs(dna):
 > >     if re.search(r"GAATTC", dna):
 > >         print("restriction site found!")
 > > find_rs("ATCGCGAATTCAC")
 > > find_rs("ATCGCGAATTAAC")
+> > ~~~
+> > {: .language-python}
 > {: .solution}
 {: .challenge}
 
@@ -101,10 +104,7 @@ for i, _ in enumerate(text):
 >
 > ## Multiple characters
 > The following pattern may represent full-length eukaryotic messenger RNA sequences:
-> ~~~
-> ^AUG[AUGC]{30,1000}A{5,10}$
-> ~~~
-> {: .language-python}
+> `^AUG[AUGC]{30,1000}A{5,10}$`
 > Describe all the syntax symbols.
 > > ## Solution
 > > `^` refers to the sequence beginning. It starts with `AUG` followed by between 30 and 1000 bases 
@@ -120,8 +120,7 @@ for i, _ in enumerate(text):
 > binding motif. But other motifs exist, such as LxLxPP, (R/K)LFGV and TLxLF.
 > Check (with Python) if the moss (Physcomitrella patens) Aux/IAA protein, which 
 > represses auxin-mediated gene expression contains the LxLxPP 
-> repression motif. The protein sequence is: 
-> ~~~
+> repression motif. The protein sequence is: <br>
 > KFSNEVVHKSMNITEDCSALTGALLKYSTDKSNMNFETLYRDAAVESPQHEVSNESGSTLKEHDYFGLSEVSSS
 > NSSSGKQPEKCCREELNLNESATTLQLGPPAAVKPSGHADGADAHDEGAGPENPAKRPAHHMQQESLADGRKAA
 > AEMGSFKIQRKNILEEFRAMKAQAHMTKSPKPVHTMQHNMHASFSGAQMAFGGAKNNGVKRVFSEAVGGNHIAAS
@@ -129,8 +128,6 @@ for i, _ in enumerate(text):
 > MPVPDGGDSSANASNDCANRKGMVASPSVQPPPAQNQTVGWPPVKNFNKMNTPAPPASTPARACPSVQRKGASTS
 > SSGNLVKIYMDGVPFGRKVDLKTNDSYDKLYSMLEDMFQQYISGQYCGGRSSSSGESHWVASSRKLNFLEGSEYV
 > LIYEDHEGDSMLVGDVPWELFVNAVKRLRIMKGSEQVNLAPKNADPTKVQVAVG
-> ~~~
-> {: .language-python}
 > > ## Solution
 > > ~~~
 > > peptide = "MKFSNEVVHKSMNITEDCSALTGALLKYSTDKSNMNFETLYRDAAVESPQHEVSNESGSTLKEHDYFGLSEVSSSNSSSGKQPEKCCREELNLNESATTLQLGPPAAVKPSGHADGADAHDEGAGPENPAKRPAHHMQQESLADGRKAAAEMGSFKIQRKNILEEFRAMKAQAHMTKSPKPVHTMQHNMHASFSGAQMAFGGAKNNGVKRVFSEAVGGNHIAASGVGVGVREGNDDVSRCEEMNGTEQLDLKVHLPKGMGMARMAPVSGGQNGSAWRNLSFDNMQGPLNPFFRKSLVSKMPVPDGGDSSANASNDCANRKGMVASPSVQPPPAQNQTVGWPPVKNFNKMNTPAPPASTPARACPSVQRKGASTSSSGNLVKIYMDGVPFGRKVDLKTNDSYDKLYSMLEDMFQQYISGQYCGGRSSSSGESHWVASSRKLNFLEGSEYVLIYEDHEGDSMLVGDVPWELFVNAVKRLRIMKGSEQVNLAPKNADPTKVQVAVG"
