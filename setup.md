@@ -70,6 +70,8 @@ If you run into any difficulties, please request help before the workshop begins
         enter again to approve the default location for the files. Type `yes` and 
         press enter to prepend Anaconda to your `PATH` (this makes the Anaconda 
         distribution the default Python).
+    
+    f.  Close and re-open the terminal to be able to run the command `conda`.
 
 ## Getting the Data
 

@@ -65,14 +65,13 @@ print(data)
 > that ends with a line like this:
 >
 > ~~~
-> OSError: File b'gapminder_gdp_oceania.csv' does not exist
+> OSError: File b'DisProt_data_Caenorhabditis-elegans.csv' does not exist
 > ~~~
 > {: .error}
 {: .callout}
 
 ## Use `index_col` to specify that a column's values should be used as row headings
 *   Row headings are numbers (0 and 1 in this case).
-*   Really want to index by country.
 *   Pass the name of the column to `read_csv` as its `index_col` parameter to do this.
 
 ~~~

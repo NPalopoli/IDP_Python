@@ -56,6 +56,8 @@ does not require an internet connection.
 
 ## Starting JupyterLab
 
+If Jupyter Lab is not installed, type in the Anaconda Prompt / Terminal `conda install -c conda-forge jupyterlab`.
+
 ### Mac OS X
 To start the JupyterLab server you will need to access the command line through the Terminal. 
 There are two ways to open Terminal on Mac.
@@ -67,6 +69,7 @@ double-click the search result or hit <kbd>Enter</kbd>
 After you have launched Terminal, type the command to launch the JupyerLab server.
 
 ~~~
+$ conda activate
 $ jupyter lab
 ~~~
 {: .bash}
@@ -87,6 +90,7 @@ $ jupyter lab
 In a terminal, type the command:
 
 ~~~
+$ conda activate
 $ jupyter lab
 ~~~
 {: .bash}

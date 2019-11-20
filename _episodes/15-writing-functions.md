@@ -136,7 +136,7 @@ Parameters can be optional. If you define a function like the following:
 ~~~
 def order_percent(length, disorder_length=0):
     percent = ((length - disorder_length)/length) * 100
-    print("Disorder percent is", percent, "%") 
+    print("Order percent is", percent, "%") 
 ~~~
 {: .language-python}
 You can call it with or without the parameter disorder_length
@@ -145,7 +145,13 @@ order_percent(1250)
 order_percent(1250, 340)
 ~~~
 {: .language-python}
-* Built-in functions may use optional parameters
+~~~
+Order percent is 100.0 %
+Order percent is 72.8 %
+~~~
+{: .output}
+
+Built-in functions may use optional parameters
 ~~~
 round(5.76543)
 round(5.76543, 4)
