@@ -70,189 +70,92 @@ for i, _ in enumerate(text):
 
 
 
-
-
 >
-> ## Reading Error Messages
->
-> Read the traceback below, and identify the following:
->
-> 1. How many levels does the traceback have?
-> 2. What is the file name where the error occurred?
-> 3. What is the function name where the error occurred?
-> 4. On which line number in this function did the error occur?
-> 5. What is the type of error?
-> 6. What is the error message?
->
-> ~~~
-> ---------------------------------------------------------------------------
-> KeyError                                  Traceback (most recent call last)
-> <ipython-input-2-e4c4cbafeeb5> in <module>()
->       1 import errors_02
-> ----> 2 errors_02.print_friday_message()
->
-> /Users/ghopper/thesis/code/errors_02.py in print_friday_message()
->      13
->      14 def print_friday_message():
-> ---> 15     print_message("Friday")
->
-> /Users/ghopper/thesis/code/errors_02.py in print_message(day)
->       9         "sunday": "Aw, the weekend is almost over."
->      10     }
-> ---> 11     print(messages[day])
->      12
->      13
->
-> KeyError: 'Friday'
-> ~~~
-> {: .error}
+> ## Finding strings in a sequence
+> Write a function that detects the restriction site "GAATTC" in any input sequence
+> and test it with two examples: one that contains the string and the other that doesn't.
 > > ## Solution
-> > 1. It has 3 levels
-> > 2. The name is <ipython-input-...> indicating that the code is being run on 
-> an interactive shell rather than from a file 
-> > 3. `print_message()`  function
-> > 4. 11
-> > 5. KeyError
-> > 6. 'Friday', the entity used as key 
+> > import re
+> > def find_rs(dna):
+> >     if re.search(r"GAATTC", dna):
+> >         print("restriction site found!")
+> > find_rs("ATCGCGAATTCAC")
+> > find_rs("ATCGCGAATTAAC")
 > {: .solution}
 {: .challenge}
 
-
-> ## Write the code
 >
-> Write the small piece of code that produces the error shown.
-> ~~~
-> ---------------------------------------------------------------------------
-> NameError                                 Traceback (most recent call last)
-> <ipython-input-2-792d33226c70> in <module>
->       7 
-> ----> 8 count()
-> 
-> <ipython-input-2-792d33226c70> in count()
->       1 def count():
-> ----> 2     count_to_ten()
->       3 
->
-> <ipython-input-2-792d33226c70> in count_to_ten()
->       4 def count_to_ten():
->       5     for i in range(10):
-> ----> 6         print(ii)
->       7
->
-> NameError: name 'ii' is not defined
-> ~~~
-> {: .error}
->
+> ## Alternative characters
+> AvaII recognition site recognizes two different sequences: GGACC and GGTCC. 
+> Modify your previous function to detect both of them.
 > > ## Solution
 > > ~~~
-> > def count():
-> >     count_to_ten()
-> >    
-> > def count_to_ten():
-> >     for i in range(10):
-> >         print(ii)
-> >
-> > count()
+> > def find_rs(dna):
+> >     if re.search(r"GG[AT]CC", dna):
+> >         print("restriction site found!")
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 {: .challenge}
+
 >
-> ## Fill in the Blanks
->
-> Fill in the blanks so the error is correct for the provided code. Try to complete the exercise
-> without testing the code in your notebook
->
+> ## Multiple characters
+> The following pattern may represent full-length eukaryotic messenger RNA sequences:
 > ~~~
-> numbers = [2, 4, 5, 1, 2, 4]
-> numbers = numbers.sort()
-> 
-> for n in numbers:
->    print(n)
+> ^AUG[AUGC]{30,1000}A{5,10}$
 > ~~~
 > {: .language-python}
->
-> ~~~
-> ---------------------------------------------------------------------------
-> TypeError                                 Traceback (most recent call last)
-> <_______-_____-6-22c0b8ebd443> in <module>
->       2 numbers = numbers.sort()
->       3 
-> ----> 4 for n in numbers:
->       5     print(n)
-> 
-> _________: '________' object is not iterable
-> ~~~
-> {: .error}
->
->
+> Describe all the syntax symbols.
 > > ## Solution
-> > ~~~
-> > ---------------------------------------------------------------------------
-> > TypeError                                 Traceback (most recent call last)
-> > <ipython-input-6-22c0b8ebd443> in <module>
-> >       2 numbers = numbers.sort()
-> >       3 
-> > ----> 4 for n in numbers:
-> >       5     print(n)
-> >
-> > TypeError: 'NoneType' object is not iterable
-> > ~~~
-> > {: .error}
+> > `^` refers to the sequence beginning. It starts with `AUG` followed by between 30 and 1000 bases 
+> > which can be A, U, G or C. Finally, a poly-A tail of 5 to 10 bases closes the sequence. The sequence 
+> > end is represented by `$`. 
 > {: .solution}
 {: .challenge}
 
 
-> ## Write the function
->
-> Complete the function body following the instructions:
-> * check `if` divisor is not 0
-> * `else` return None and `print` a message informing that the function couldn't divide by 0
-> * `try` to perform the division; then return the result
-> * `except` the type is incorrect for the operation; then return None and `print` a message informing 
-> that the type was wrong
->
+> ## Let's move to protein sequences!
+> The transcriptional co-repressor TOPLESS (TPL) binds to short motifs in 
+> proteins. LxLxL (where x is any amino acid) is a well characterized TPL 
+> binding motif. But other motifs exist, such as LxLxPP, (R/K)LFGV and TLxLF.
+> Check (with Python) if the moss (Physcomitrella patens) Aux/IAA protein, which 
+> represses auxin-mediated gene expression contains the LxLxPP 
+> repression motif. The protein sequence is: 
 > ~~~
-> divisors = [1, 2, 3, 0, "s"]
-> 
-> def divide(dividend, divisor):
->   ___
-> 
-> for divisor in divisors:
->     print(divide(2, divisor))
+> KFSNEVVHKSMNITEDCSALTGALLKYSTDKSNMNFETLYRDAAVESPQHEVSNESGSTLKEHDYFGLSEVSSS
+> NSSSGKQPEKCCREELNLNESATTLQLGPPAAVKPSGHADGADAHDEGAGPENPAKRPAHHMQQESLADGRKAA
+> AEMGSFKIQRKNILEEFRAMKAQAHMTKSPKPVHTMQHNMHASFSGAQMAFGGAKNNGVKRVFSEAVGGNHIAAS
+> GVGVGVREGNDDVSRCEEMNGTEQLDLKVHLPKGMGMARMAPVSGGQNGSAWRNLSFDNMQGPLNPFFRKSLVSK
+> MPVPDGGDSSANASNDCANRKGMVASPSVQPPPAQNQTVGWPPVKNFNKMNTPAPPASTPARACPSVQRKGASTS
+> SSGNLVKIYMDGVPFGRKVDLKTNDSYDKLYSMLEDMFQQYISGQYCGGRSSSSGESHWVASSRKLNFLEGSEYV
+> LIYEDHEGDSMLVGDVPWELFVNAVKRLRIMKGSEQVNLAPKNADPTKVQVAVG
 > ~~~
 > {: .language-python}
->
-> ~~~
-> 2.0
-> 1.0
-> 0.6666666666666666
-> cannot divide by 0
-> None
-> divisor should be a number, instead it's a <class 'str'>
-> None
-> ~~~
-> {: .output}
->
->
 > > ## Solution
 > > ~~~
-> >  divisors = [1, 2, 3, 0, "s"]
-> >  
-> >  def divide(dividend, divisor):
-> >      if divisor != 0:
-> >          try:
-> >              result = dividend / divisor
-> >          except TypeError:
-> >              print("divisor should be a number, instead it's a {}".format(type(divisor)))
-> >              result = None
-> >      else:
-> >          print("cannot divide by 0")
-> >          result = None
-> >      return result
-> >  
-> >  for divisor in divisors:
-> >      print(divide(2, divisor))
+> > peptide = "MKFSNEVVHKSMNITEDCSALTGALLKYSTDKSNMNFETLYRDAAVESPQHEVSNESGSTLKEHDYFGLSEVSSSNSSSGKQPEKCCREELNLNESATTLQLGPPAAVKPSGHADGADAHDEGAGPENPAKRPAHHMQQESLADGRKAAAEMGSFKIQRKNILEEFRAMKAQAHMTKSPKPVHTMQHNMHASFSGAQMAFGGAKNNGVKRVFSEAVGGNHIAASGVGVGVREGNDDVSRCEEMNGTEQLDLKVHLPKGMGMARMAPVSGGQNGSAWRNLSFDNMQGPLNPFFRKSLVSKMPVPDGGDSSANASNDCANRKGMVASPSVQPPPAQNQTVGWPPVKNFNKMNTPAPPASTPARACPSVQRKGASTSSSGNLVKIYMDGVPFGRKVDLKTNDSYDKLYSMLEDMFQQYISGQYCGGRSSSSGESHWVASSRKLNFLEGSEYVLIYEDHEGDSMLVGDVPWELFVNAVKRLRIMKGSEQVNLAPKNADPTKVQVAVG"
+> > if re.search(r"L*L*PP", peptide):
+> >     print("Repression domain found")
+> > else:
+> >     print("Nope, nothing")
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+{: .challenge}
+
+
+> ## Want to find multiple instances?
+> Analise the same sequence of the previous exercise to count how many polyproline
+> motifs `PxxP` does it contain. At the end, print instance and then their number.
+> To find multiple instances of a regex, use the function `finditer` instead of `search`.
+> > ## Solution
+> > ~~~
+> > matches = re.finditer(r"P**P", peptide)
+> > result = [] 
+> > for m in matches: 
+> >     result.append(m.group())
+> > print(result) 
+> > print(len(result))
 > > ~~~
 > > {: .language-python}
 > {: .solution}

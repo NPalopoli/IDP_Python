@@ -40,7 +40,7 @@ pie chart later.
 > > there is a logical error. To do so, always design a simple input with pre-defined output and run your 
 > > function to compare your expectations with the function result. 
 > > 4. Finally, we learned how to plot data in the lesson "Plotting". We know we haven't used the pie chart, 
-> > but you can check some examples of code in the [Python Graph Gallery](https://python-graph-gallery.com/matplotlib/)
+> > but you can check some examples of code in the [Matplotlib pie charts](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.pie)
 > > 
 > > Feel free to ask us if you have any doubt. We will cook your code together!
 > {: .solution}
