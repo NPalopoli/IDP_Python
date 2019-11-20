@@ -146,11 +146,13 @@ cannot divide by 0
 > ~~~
 > {: .error}
 > > ## Solution
-> > * It has 3 levels
-> > * `print_message()`  function
-> > * 11
-> > * KeyError
-> > * 'Friday', the entity used as key 
+> > 1. It has 3 levels
+> > 2. The name is <ipython-input-...> indicating that the code is being run on 
+> an interactive shell rather than from a file 
+> > 3. `print_message()`  function
+> > 4. 11
+> > 5. KeyError
+> > 6. 'Friday', the entity used as key 
 > {: .solution}
 {: .challenge}
 
