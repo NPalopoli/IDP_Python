@@ -153,11 +153,13 @@ if match is not None:
 * You can create your own character classes using square braces `[]`
 
 | `[aeiouAeiou]`  | Matches vowels                   |
-| `^[aeiouAeiou]` | Matches non-vowels               |
+| `[^aeiouAeiou]` | Matches non-vowels               |
 | `[0-9a-zA-Z]`   | Matches vowels, same as `\w`     |
-| `^[0-9a-zA-Z]`  | Matches non-vowels, same as `\W` |
+| `[^0-9a-zA-Z]`  | Matches non-vowels, same as `\W` |
 
 * We are not literally looking for `^` or `-` characters, they represent something
+* When inside a character class, the presence of a `^` indicates that the regex will match anything that is not in the character class
+* When used outside of a character class `^` matches the start of a string. (`$` indicates the string end) 
 * In general, punctuation marks in regular expression have specific meaning
 * If you were to actually look for a punctuation mark you would need to escape them (`\^`, `\?`, `\\`, ...)
 
@@ -234,9 +236,11 @@ has 2 types of entries. It currently has 181,787,788 automatically annotated ent
 > > ## Solution
 > > ~~~
 > > import re
+> > 
 > > def find_rs(dna):
-> >     if re.search(r"GAATTC", dna):
+> >     if re.search(r"GAATTC", dna) is not None:
 > >         print("restriction site found!")
+> > 
 > > find_rs("ATCGCGAATTCAC")
 > > find_rs("ATCGCGAATTAAC")
 > > ~~~
@@ -251,7 +255,7 @@ has 2 types of entries. It currently has 181,787,788 automatically annotated ent
 > > ## Solution
 > > ~~~
 > > def find_rs(dna):
-> >     if re.search(r"GG[AT]CC", dna):
+> >     if re.search(r"GG[AT]CC", dna) is not None:
 > >         print("restriction site found!")
 > > ~~~
 > > {: .language-python}
