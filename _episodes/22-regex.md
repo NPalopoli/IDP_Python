@@ -13,6 +13,7 @@ keypoints:
 - The `re` library is used to find regex in a string with Python.
 - Alternative characters are defined with `[]`
 - Repetitions are defined with `{}`
+- Other syntax symbols are well documented at [https://docs.python.org/3/library/re.html](https://docs.python.org/3/library/re.html)
 ---
 
 ## Regular expressions
@@ -31,7 +32,7 @@ match = regex.search('haystack string')
 # print out the exact match of your regular expression
 print(match.group())
 ~~~
-{: language-python}
+{: .language-python}
 
 ## Find patterns in text without regex
 * Imagine you need to systematically extract telephone numbers from messages
@@ -212,7 +213,17 @@ sayonara
 ~~~
 {: .output}
     
-
+## Regex buddy
+* Testing your regex writing code can be slow and frustrating
+* There are online tools called regex buddy or regex testers that make the process of creating a regex much easier
+    * [Pyregex](http://pyregex.com)
+    * [Regex101](https://regex101.com/)
+    * many others
+    
+* Let's say that we want to match comma formatted numbers
+* Our regex should encode for: “One to three digits, followed by zero or more groups of comma-digit-digit-digit” 
+* This translates to `\d{1,3}(,\d{3)*`, let's try it out on one of the linked tool with this sentence: "UniProt 
+has 2 types of entries. It currently has 181,787,788 automatically annotated entries and 561,356 curated entries"
 
   
 
