@@ -46,6 +46,7 @@ pie chart later.
 > {: .solution}
 {: .challenge}
 
+
 ## Additional tasks
 If you finish early or you want to challenge yourself at home, here some possible 
 variations:
