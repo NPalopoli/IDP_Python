@@ -3,7 +3,7 @@ Training material on Intrinsically Disordered Proteins (IDPs).
 
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badge/) 
 
-This repository generates the corresponding [lesson website](https://idpfun.github.io/IDP_lesson_development/), 
+This repository generates the corresponding [lesson website](https://idpfun.github.io/IDP_Python/), 
 according to styles and recommentations from 
 [The Carpentries](https://carpentries.org/). 
 
